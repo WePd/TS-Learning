@@ -70,6 +70,8 @@ const s7 = Symbol.for("lis")
 //与symbol不同的是，当第二次使同一个symbol创建值的时候，第二个会在全局范围内查找，
 //若是发现已经创建了值则直接返回上一个创建的值，否则就会重新创建一个新的值
 const s8 = Symbol.for("lis")
+
 //返回的是用Symbole.for()创建的变量的标识
+//其他都返回的是undefined
 
 console.log(Symbol.keyFor(s7)) // lis
