@@ -12,12 +12,12 @@
 
 // 使用接口
 interface NameInfo {
-	firstName: string
-	secondName: string
+  firstName: string
+  secondName: string
 }
 
 const getFullName = ({ firstName, secondName }: NameInfo): string => {
-	return `${firstName} ${secondName}`
+  return `${firstName} ${secondName}`
 }
 
 // tslint:disable-next-line: no-console
@@ -74,20 +74,20 @@ console.log(getFullName({ firstName: "li", secondName: "qq" }))
 
 // 四 设置只读属性
 interface Vagetable {
-	color?: string
-	readonly type: string
+  color?: string
+  readonly type: string
 }
 
 let vagetable: Vagetable = {
-	type: "tomato",
+  type: "tomato",
 }
 // type属性不能修改
 // vagetable.type = "carront"
 
 // 数组只读
 interface ArrInter {
-	0: string
-	readonly 1: number
+  0: string
+  readonly 1: number
 }
 
 // let arr: ArrInter = [123] //报错
@@ -103,11 +103,54 @@ type AddFunc = (num1: number, num2: number) => number
 
 // 六. 指定索引类型
 interface RoleDic {
-	[id: number]: string
+  [id: number]: string
 }
 const roledic: RoleDic = {
-	// 0: 'lqy'
-	// 'name': 'lqy' // error
+  // 0: 'lqy'
+  // 'name': 'lqy' // error
 }
 
-// 七， 接口的继承
+// 七， 接口的继承 可以提高接口的可复用性
+interface Man {
+  speaking: string
+}
+
+interface Teacher extends Man {
+  teach: string
+}
+
+interface Coder extends Man {
+  code: string
+}
+
+const MathTeacher: Teacher = {
+  speaking: "chinese",
+  teach: "Math",
+}
+
+const code: Coder = {
+  speaking: "English",
+  code: "Javascript",
+}
+
+// 混合类型接口
+interface Count {
+  (): void
+  count: number
+}
+
+const getCount = (): Count => {
+  const c = () => {
+    c.count++
+  }
+  c.count = 0
+  return c
+}
+
+const counter: Count = getCount()
+counter()
+console.log(counter.count)
+counter()
+console.log(counter.count)
+counter()
+console.log(counter.count)
