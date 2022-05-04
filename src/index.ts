@@ -8,4 +8,5 @@
 // import "./example/class"
 // import "./example/Object"
 // import "./example/enum"
-import "./example/decorator"
+// import "./example/decorator"
+import "./example/mixin"
